@@ -1,7 +1,9 @@
 <script type="text/discourse-plugin" version="0.8">
   const container = Discourse.__container__;    
   const { h } = require('virtual-dom');
- 
+  const { iconNode } = require("discourse-common/lib/icon-library");
+  let lockIcon = iconNode('lock');
+
   api.createWidget('category-header-widget', {
       tagName: 'span', 
       html(attrs, state) {
@@ -31,7 +33,7 @@
 
             function ifProtected() {
                 if(category.read_restricted) {
-                    return h('i.fa.fa-lock');                    
+                    return lockIcon;                    
                 }
             }
           
